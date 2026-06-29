@@ -23,7 +23,9 @@ GitHub Pages does not natively support arbitrary server-side routes, so this fol
 
 ## Configuration Needs
 
-- `PUBLIC_API_BASE_URL` in `app.js`
+- `apiBaseUrl` in `config.js`
+
+Edit [config.js](/Users/kerimanater/MyMacData/UNI/Master/HCI/Semester%203/DW2/pico-light-control/web/config.js) to point the static frontend at the correct backend URL.
 
 ## GitHub Pages Setup
 

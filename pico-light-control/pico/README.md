@@ -20,10 +20,23 @@ This folder will contain the MicroPython code that runs on the Pico W.
 - Wi-Fi password
 - backend base URL
 - device ID
-- device token
 
-## Suggested Polling Model
+## Current Model
 
 - Poll every `0.5` to `1.0` seconds
 - Request latest command for one device
 - Apply command only if it is newer than the last applied command
+- Send heartbeat updates periodically
+
+## Setup
+
+1. Copy `secrets.example.py` to `secrets.py`.
+2. Fill in your real Wi-Fi credentials.
+3. Keep `BACKEND_BASE_URL` pointed at the live backend.
+4. Copy both files to the Pico.
+
+## Runtime Behavior
+
+- `solid` and `off` are applied immediately after polling
+- `siri` keeps animating locally between polls
+- Wi-Fi reconnect is handled automatically

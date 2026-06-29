@@ -1,4 +1,7 @@
-const PUBLIC_API_BASE_URL = "https://api.example.com";
+const PUBLIC_API_BASE_URL =
+  window.SMART_COBBLE_CONFIG && window.SMART_COBBLE_CONFIG.apiBaseUrl
+    ? window.SMART_COBBLE_CONFIG.apiBaseUrl
+    : "";
 
 function normalizedRoute() {
   const url = new URL(window.location.href);
@@ -43,6 +46,11 @@ async function sendCommand() {
     return;
   }
 
+  if (!PUBLIC_API_BASE_URL) {
+    status.textContent = "Missing API base URL.";
+    return;
+  }
+
   const payload = {
     mode: document.getElementById("mode").value,
     color: document.getElementById("color").value.slice(1),
@@ -70,7 +78,7 @@ async function sendCommand() {
 
     status.textContent = "Command sent.";
   } catch (error) {
-    status.textContent = "Backend not configured yet.";
+    status.textContent = "Backend not reachable.";
   }
 }
 
