@@ -1,3 +1,3 @@
 window.SMART_COBBLE_CONFIG = {
-  apiBaseUrl: "http://127.0.0.1:8788",
+  apiBaseUrl: "http://167.235.19.115:8788",
 };
