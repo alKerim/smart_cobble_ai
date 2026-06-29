@@ -1,6 +1,6 @@
 # Web Frontend
 
-This folder is reserved for the public control UI.
+This folder now contains a minimal static frontend intended for GitHub Pages.
 
 ## Responsibility
 
@@ -9,21 +9,35 @@ This folder is reserved for the public control UI.
 - Show a minimal control interface
 - Send commands to the backend API
 
-## Planned Route Shape
+## Route Shape
 
-- `/device/:deviceId`
+- `/device/<device_id>`
+
+GitHub Pages does not natively support arbitrary server-side routes, so this folder includes a `404.html` fallback that sends direct deep links back into the client-side app.
 
 ## Deployment Target
 
-- Vercel
-- static frontend if possible
-- custom domain such as `https://lights.example.com`
+- GitHub Pages
+- static HTML, CSS, and JavaScript
+- no build step required
 
 ## Configuration Needs
 
-- public API base URL
-- optional admin key for private setup tools only
+- `PUBLIC_API_BASE_URL` in `app.js`
 
-## Vercel Note
+## GitHub Pages Setup
 
-When deployed, set the Vercel project root to this `web/` folder.
+1. Push this repository to GitHub.
+2. In the repository, go to `Settings` -> `Pages`.
+3. Under `Build and deployment`, set `Source` to `GitHub Actions`.
+4. The workflow in `.github/workflows/deploy-pages.yml` will publish this folder.
+
+## URL Shapes
+
+If you publish as a project site, the base URL will look like:
+
+- `https://USERNAME.github.io/REPOSITORY_NAME/`
+
+If you publish as a user site repo named exactly `USERNAME.github.io`, the base URL will look like:
+
+- `https://USERNAME.github.io/`

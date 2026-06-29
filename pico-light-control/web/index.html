@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pico Light Control</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <section class="card">
+        <p class="eyebrow">Public Controller</p>
+        <h1>Pico Light Control</h1>
+        <p class="subtle" id="device-label">Loading device...</p>
+
+        <div class="field">
+          <label for="mode">Mode</label>
+          <select id="mode">
+            <option value="solid">Solid</option>
+            <option value="siri">Siri Fade</option>
+            <option value="off">Off</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="color">Color</label>
+          <input id="color" type="color" value="#0080ff">
+        </div>
+
+        <div class="field">
+          <label for="brightness">Brightness</label>
+          <input id="brightness" type="range" min="0" max="100" value="60">
+        </div>
+
+        <button id="send-button" type="button">Send Command</button>
+        <p class="status" id="status">Waiting for configuration.</p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+      (function() {
+        var path = window.location.pathname;
+        var query = window.location.search || "";
+        var hash = window.location.hash || "";
+        var base = path.replace(/\/device\/.*$/, "/");
+        var route = path.slice(base.length);
+        var target = base + "?route=" + encodeURIComponent(route) + query + hash;
+        window.location.replace(target);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -6,7 +6,7 @@ This subproject is the minimal foundation for controlling a Pico-powered light d
 
 - `pico/`: the MicroPython script that runs on the Pico W
 - `backend/`: the API running on your Hetzner server
-- `web/`: the public frontend, intended for Vercel hosting
+- `web/`: the public frontend, intended for GitHub Pages hosting
 
 ## Planned Flow
 
@@ -24,7 +24,8 @@ This subproject is the minimal foundation for controlling a Pico-powered light d
                        |
                        v
           +---------------------------+
-          | Public frontend on Vercel |
+          | Public frontend on        |
+          | GitHub Pages              |
           | /device/<device_id>       |
           +-------------+-------------+
                         |
@@ -83,6 +84,6 @@ These values are expected later and are intentionally not filled in yet:
 
 ## Notes
 
-- The frontend should stay static and simple so Vercel deployment is easy.
+- The frontend stays static so GitHub Pages deployment is easy.
 - The backend should be the only component the Pico talks to over the internet.
 - The Pico should never be exposed directly to the public internet.
