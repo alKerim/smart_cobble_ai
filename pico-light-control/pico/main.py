@@ -1,13 +1,12 @@
-from machine import Pin
 import math
-import network
-import neopixel
 import socket
 import time
+from secrets import BACKEND_BASE_URL, DEVICE_ID, WIFI_PASSWORD, WIFI_SSID
+
+import neopixel
+import network
 import urequests
-
-from secrets import WIFI_SSID, WIFI_PASSWORD, BACKEND_BASE_URL, DEVICE_ID
-
+from machine import Pin
 
 DATA_PIN = 0
 NUM_LEDS = 19
@@ -240,12 +239,18 @@ def main():
 
         now_ms = time.ticks_ms()
 
-        if wlan.isconnected() and time.ticks_diff(now_ms, last_poll_ms) >= POLL_INTERVAL_MS:
+        if (
+            wlan.isconnected()
+            and time.ticks_diff(now_ms, last_poll_ms) >= POLL_INTERVAL_MS
+        ):
             command = fetch_latest_command()
             apply_command(command)
             last_poll_ms = now_ms
 
-        if wlan.isconnected() and time.ticks_diff(now_ms, last_heartbeat_ms) >= HEARTBEAT_INTERVAL_MS:
+        if (
+            wlan.isconnected()
+            and time.ticks_diff(now_ms, last_heartbeat_ms) >= HEARTBEAT_INTERVAL_MS
+        ):
             send_heartbeat()
             last_heartbeat_ms = now_ms
 
