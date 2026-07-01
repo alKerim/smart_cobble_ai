@@ -2,6 +2,10 @@ const PUBLIC_API_BASE_URL =
   window.SMART_COBBLE_CONFIG && window.SMART_COBBLE_CONFIG.apiBaseUrl
     ? window.SMART_COBBLE_CONFIG.apiBaseUrl
     : "";
+const DEFAULT_DEVICE_ID =
+  window.SMART_COBBLE_CONFIG && window.SMART_COBBLE_CONFIG.defaultDeviceId
+    ? window.SMART_COBBLE_CONFIG.defaultDeviceId
+    : "";
 
 function normalizedRoute() {
   const url = new URL(window.location.href);
@@ -19,18 +23,18 @@ function extractDeviceId() {
   const segments = route.split("/").filter(Boolean);
   const deviceIndex = segments.indexOf("device");
 
-  if (deviceIndex === -1 || !segments[deviceIndex + 1]) {
-    return null;
+  if (deviceIndex !== -1 && segments[deviceIndex + 1]) {
+    return decodeURIComponent(segments[deviceIndex + 1]);
   }
 
-  return decodeURIComponent(segments[deviceIndex + 1]);
+  return DEFAULT_DEVICE_ID || null;
 }
 
 function renderDeviceLabel(deviceId) {
   const label = document.getElementById("device-label");
 
   if (!deviceId) {
-    label.textContent = "No device id found in URL.";
+    label.textContent = "No device configured.";
     return;
   }
 

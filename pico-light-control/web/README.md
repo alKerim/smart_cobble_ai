@@ -5,15 +5,18 @@ This folder now contains a minimal static frontend intended for GitHub Pages.
 ## Responsibility
 
 - Open from a QR code
-- Resolve the device from the URL
+- Resolve the device from the URL or from the configured default device
 - Show a minimal control interface
 - Send commands to the backend API
 
 ## Route Shape
 
+- `/`
 - `/device/<device_id>`
 
 GitHub Pages does not natively support arbitrary server-side routes, so this folder includes a `404.html` fallback that sends direct deep links back into the client-side app.
+
+For the current prototype deployment, the root URL uses `defaultDeviceId` from `config.js`, so visitors can open the site without manually adding a device ID.
 
 ## Deployment Target
 
@@ -24,6 +27,7 @@ GitHub Pages does not natively support arbitrary server-side routes, so this fol
 ## Configuration Needs
 
 - `apiBaseUrl` in `config.js`
+- `defaultDeviceId` in `config.js`
 
 Edit [config.js](/Users/kerimanater/MyMacData/UNI/Master/HCI/Semester%203/DW2/pico-light-control/web/config.js) to point the static frontend at the correct backend URL.
 

@@ -10,7 +10,7 @@ This subproject is the minimal foundation for controlling a Pico-powered light d
 
 ## Planned Flow
 
-1. A QR code opens a public page like `https://lights.example.com/device/cobble-001`.
+1. A QR code opens a public page like `https://lights.example.com/`.
 2. The web frontend sends a command to the backend API.
 3. The Pico polls the backend for the latest command.
 4. The Pico updates the LEDs.
@@ -26,7 +26,7 @@ This subproject is the minimal foundation for controlling a Pico-powered light d
           +---------------------------+
           | Public frontend on        |
           | GitHub Pages              |
-          | /device/<device_id>       |
+          | / or /device/<device_id>  |
           +-------------+-------------+
                         |
                         | HTTPS
@@ -85,5 +85,6 @@ These values are expected later and are intentionally not filled in yet:
 ## Notes
 
 - The frontend stays static so GitHub Pages deployment is easy.
+- The current prototype can default the root URL to a single configured device.
 - The backend should be the only component the Pico talks to over the internet.
 - The Pico should never be exposed directly to the public internet.
